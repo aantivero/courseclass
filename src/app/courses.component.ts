@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CourseService} from './course.service';
 
 @Component({
     selector: 'courses',
@@ -6,13 +7,18 @@ import { Component } from '@angular/core';
     <h2>Courses</h2>
     {{title}}
     <ul>
-        <li *ngFor="#course of courses">
+        <li *ngFor="let course of courses">
             {{course}}
         </li>
     </ul>
-    `
+    `,
+    providers: [CourseService]
 })
 export class CoursesComponent {
     title: string = 'The title of course page';
-    courses: Array<string> = ['Course 1', 'Course 2', 'Course 3'];
+    courses;
+    
+    constructor(courseService: CourseService) {
+        this.courses = courseService.getCourses();
+    }
 }
