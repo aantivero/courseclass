@@ -7,9 +7,16 @@ import { AuthorsComponent } from './authors.component';
   selector: 'courseclass-app',
   template: `<h1>{{title}}</h1>
               <courses></courses>
-              <authors></authors>`,
+              <authors></authors>
+              
+              <!-- Property Binding -->
+              <img src="{{imageUrl}}" />
+              <img [src]="imageUrl" />
+              <img bind-src="imageUrl" />
+              `,
   directives: [CoursesComponent, AuthorsComponent]
 })
 export class CourseclassAppComponent {
   title = 'courseclass works!';
+  imageUrl = "http://dummyimage.com/400x200/017/fff";
 }
